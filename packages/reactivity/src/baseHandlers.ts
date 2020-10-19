@@ -13,7 +13,7 @@ import {
   trigger,
   ITERATE_KEY,
   pauseTracking,
-  enableTracking
+  resetTracking
 } from './effect'
 import {
   isObject,
@@ -64,7 +64,7 @@ const arrayInstrumentations: Record<string, Function> = {}
   arrayInstrumentations[key] = function(this: unknown[], ...args: unknown[]) {
     pauseTracking()
     const res = method.apply(this, args)
-    enableTracking()
+    resetTracking()
     return res
   }
 })
@@ -89,9 +89,8 @@ function createGetter(isReadonly = false, shallow = false) {
 
     const res = Reflect.get(target, key, receiver)
 
-    const keyIsSymbol = isSymbol(key)
     if (
-      keyIsSymbol
+      isSymbol(key)
         ? builtInSymbols.has(key as symbol)
         : key === `__proto__` || key === `__v_isRef`
     ) {
