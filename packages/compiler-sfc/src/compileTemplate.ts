@@ -186,7 +186,7 @@ function doCompileTemplate({
         `corresponding \`cssVars\` option.\`.`
     )
   }
-  if (!id) {
+  if (ssr && !id) {
     warnOnce(`compileTemplate now requires the \`id\` option.\`.`)
     id = ''
   }
