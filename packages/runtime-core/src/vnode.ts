@@ -133,7 +133,7 @@ export interface VNode<
   [ReactiveFlags.SKIP]: true
   type: VNodeTypes
   props: (VNodeProps & ExtraProps) | null
-  key: string | number | null
+  key: string | number | null | symbol | boolean
   ref: VNodeNormalizedRef | null
   /**
    * SFC only. This is assigned on vnode creation using currentScopeId
