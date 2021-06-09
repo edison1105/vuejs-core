@@ -76,6 +76,7 @@ test('isMemberExpression', () => {
   // should work
   expect(isMemberExpression('obj.foo')).toBe(true)
   expect(isMemberExpression('obj[foo]')).toBe(true)
+  expect(isMemberExpression('obj[foo][bar]')).toBe(true)
   expect(isMemberExpression('obj[arr[0]]')).toBe(true)
   expect(isMemberExpression('obj[arr[ret.bar]]')).toBe(true)
   expect(isMemberExpression('obj[arr[ret[bar]]]')).toBe(true)

@@ -32,7 +32,14 @@ import {
   BASE_TRANSITION,
   TO_HANDLERS
 } from './runtimeHelpers'
-import { isString, isObject, hyphenate, extend } from '@vue/shared'
+import {
+  isString,
+  isObject,
+  hyphenate,
+  extend,
+  babelParserDefaultPlugins
+} from '@vue/shared'
+import { parseExpression } from '@babel/parser'
 
 export const isStaticExp = (p: JSChildNode): p is SimpleExpressionNode =>
   p.type === NodeTypes.SIMPLE_EXPRESSION && p.isStatic
@@ -56,14 +63,23 @@ const nonIdentifierRE = /^\d|[^\$\w]/
 export const isSimpleIdentifier = (name: string): boolean =>
   !nonIdentifierRE.test(name)
 
-const memberExpRE = /^[A-Za-z_$\xA0-\uFFFF][\w$\xA0-\uFFFF]*(?:\s*\.\s*[A-Za-z_$\xA0-\uFFFF][\w$\xA0-\uFFFF]*|\[(.+)\])*$/
 export const isMemberExpression = (path: string): boolean => {
-  if (!path) return false
-  const matched = memberExpRE.exec(path.trim())
-  if (!matched) return false
-  if (!matched[1]) return true
-  if (!/[\[\]]/.test(matched[1])) return true
-  return isMemberExpression(matched[1].trim())
+  try {
+    const exp = parseExpression(path, {
+      sourceType: 'module',
+      plugins: [...babelParserDefaultPlugins, 'typescript']
+    })
+    return (
+      exp.type !== 'ArrowFunctionExpression' &&
+      exp.type !== 'FunctionExpression' &&
+      exp.type !== 'UpdateExpression' &&
+      exp.type !== 'CallExpression' &&
+      exp.type !== 'BinaryExpression'
+    )
+  } catch (e) {
+    console.log(path)
+    return false
+  }
 }
 
 export function getInnerRange(
