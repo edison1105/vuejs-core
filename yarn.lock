@@ -507,32 +507,32 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@microsoft/api-extractor-model@7.13.1":
-  version "7.13.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.13.1.tgz#6dd9c4bd49b5d0d32b44c564a94c34b3c3aa2a87"
-  integrity sha512-PKAjDmAJ6X07tvqCHSN1PRaKq8bZQXF9QI6WGEMnCHNFWwXUoITOAcvFW0Ol3TzwHO5rLbuy/CqWebfhv8eOtw==
+"@microsoft/api-extractor-model@7.13.3":
+  version "7.13.3"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.13.3.tgz#ac01c064c5af520d3661c85d7e5ef95e1ca8ab92"
+  integrity sha512-uXilAhu2GcvyY/0NwVRk3AN7TFYjkPnjHLV2UywTTz9uglS+Af0YjNrCy+aaK8qXtfbFWdBzkH9N2XU8/YBeRQ==
   dependencies:
     "@microsoft/tsdoc" "0.13.2"
     "@microsoft/tsdoc-config" "~0.15.2"
-    "@rushstack/node-core-library" "3.37.0"
+    "@rushstack/node-core-library" "3.39.0"
 
 "@microsoft/api-extractor@^7.15.1":
-  version "7.15.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.15.1.tgz#c3791933367ddded72a2f1d3c437e17fa050eac5"
-  integrity sha512-PYbGAvxbM5B6HbafXY7tJ4ObYpeUZrZFt9vlN68tpYG/7aeldMLAZSjTyB30VFXaGlArjeEooKZIcs2ZnVAbNg==
+  version "7.17.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.17.1.tgz#df6b7aa7cadcb35e2483048ebe5dbaf7af932446"
+  integrity sha512-NqdN627QoDdDtvfqEoX+Z6WbF2yid5URUZVYefC9KuisgwrsfvbSj5QwzOZlMYcufoafTq9jfeVyFAXr4PqGig==
   dependencies:
-    "@microsoft/api-extractor-model" "7.13.1"
+    "@microsoft/api-extractor-model" "7.13.3"
     "@microsoft/tsdoc" "0.13.2"
     "@microsoft/tsdoc-config" "~0.15.2"
-    "@rushstack/node-core-library" "3.37.0"
+    "@rushstack/node-core-library" "3.39.0"
     "@rushstack/rig-package" "0.2.12"
-    "@rushstack/ts-command-line" "4.7.10"
+    "@rushstack/ts-command-line" "4.8.0"
     colors "~1.2.1"
     lodash "~4.17.15"
     resolve "~1.17.0"
     semver "~7.3.0"
     source-map "~0.6.1"
-    typescript "~4.2.4"
+    typescript "~4.3.2"
 
 "@microsoft/tsdoc-config@~0.15.2":
   version "0.15.2"
@@ -628,10 +628,10 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@rushstack/node-core-library@3.37.0":
-  version "3.37.0"
-  resolved "https://registry.yarnpkg.com/@rushstack/node-core-library/-/node-core-library-3.37.0.tgz#6e8ebfdbe2829d380bc827bbb450361fb48e142c"
-  integrity sha512-b0OGvl20zfepytLBnKsOtemtiadNZAVolXxaSYssV9VjXaLPF97oLvtLfwc58BX05ufIsrKZgXatnRo8YeffNg==
+"@rushstack/node-core-library@3.39.0":
+  version "3.39.0"
+  resolved "https://registry.yarnpkg.com/@rushstack/node-core-library/-/node-core-library-3.39.0.tgz#38928946d15ae89b773386cf97433d0d1ec83b93"
+  integrity sha512-kgu3+7/zOBkZU0+NdJb1rcHcpk3/oTjn5c8cg5nUTn+JDjEw58yG83SoeJEcRNNdl11dGX0lKG2PxPsjCokZOQ==
   dependencies:
     "@types/node" "10.17.13"
     colors "~1.2.1"
@@ -651,10 +651,10 @@
     resolve "~1.17.0"
     strip-json-comments "~3.1.1"
 
-"@rushstack/ts-command-line@4.7.10":
-  version "4.7.10"
-  resolved "https://registry.yarnpkg.com/@rushstack/ts-command-line/-/ts-command-line-4.7.10.tgz#a2ec6efb1945b79b496671ce90eb1be4f1397d31"
-  integrity sha512-8t042g8eerypNOEcdpxwRA3uCmz0duMo21rG4Z2mdz7JxJeylDmzjlU3wDdef2t3P1Z61JCdZB6fbm1Mh0zi7w==
+"@rushstack/ts-command-line@4.8.0":
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/@rushstack/ts-command-line/-/ts-command-line-4.8.0.tgz#611accb931b9ac62ff4d078f68f95c47f6606724"
+  integrity sha512-nZ8cbzVF1VmFPfSJfy8vEohdiFAH/59Y/Y+B4nsJbn4SkifLJ8LqNZ5+LxCC2UR242EXFumxlsY1d6fPBxck5Q==
   dependencies:
     "@types/argparse" "1.0.38"
     argparse "~1.0.9"
@@ -7094,10 +7094,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.2.2, typescript@~4.2.4:
-  version "4.2.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
-  integrity sha512-V+evlYHZnQkaz8TRBuxTA92yZBPotr5H+WhQ7bD3hZUndx5tGOa1fuCgeSjxAzM1RiN5IzvadIXTVefuuwZCRg==
+typescript@^4.2.2, typescript@~4.3.2:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
+  integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
 
 uglify-js@^3.1.4:
   version "3.13.0"
