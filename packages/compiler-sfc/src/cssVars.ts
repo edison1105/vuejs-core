@@ -20,9 +20,12 @@ export function genCssVarsFromList(
   isSSR = false
 ): string {
   return `{\n  ${vars
-    .map(
-      key => `"${isSSR ? `--` : ``}${genVarName(id, key, isProd)}": (${key})`
-    )
+    .map(key => {
+      const varName = genVarName(id, key, isProd)
+      return `"${isSSR ? `--` : ``}${
+        isSSR ? varName.replace(/\\/, '\\\\') : varName
+      }": (${key})`
+    })
     .join(',\n  ')}\n}`
 }
 
