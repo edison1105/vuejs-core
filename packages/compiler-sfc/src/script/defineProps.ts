@@ -311,6 +311,7 @@ function genDestructuredDefaultValue(
     if (
       inferredType &&
       inferredType.length &&
+      !inferredType.includes('null') &&
       !inferredType.includes(UNKNOWN_TYPE)
     ) {
       const valueType = inferValueType(unwrapped)

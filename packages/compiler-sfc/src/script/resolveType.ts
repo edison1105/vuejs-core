@@ -770,6 +770,13 @@ function resolveExt(filename: string, fs: FS) {
   const tryResolve = (filename: string) => {
     if (fs.fileExists(filename)) return filename
   }
+
+  // remove file extension if not a ts file
+  let ext = extname(filename)
+  if (ext.length && ext !== `.ts`) {
+    filename = filename.slice(0, -ext.length)
+  }
+
   return (
     tryResolve(filename) ||
     tryResolve(filename + `.ts`) ||
