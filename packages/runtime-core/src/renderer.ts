@@ -2118,10 +2118,10 @@ function baseCreateRenderer(
         )
       } else if (
         dynamicChildren &&
-        patchFlag > 0 &&
+        // #5154: fast path should not be taken if children contain cached nodes (v-once)
+        !(isArray(children) && (children as VNode[]).some(c => c.cached)) &&
         // #1153: fast path should not be taken for non-stable (v-for) fragments
-        (type !== Fragment ||
-          (patchFlag & PatchFlags.STABLE_FRAGMENT))
+        (type !== Fragment || patchFlag & PatchFlags.STABLE_FRAGMENT)
       ) {
         // fast path for block nodes: only need to unmount dynamic children.
         unmountChildren(

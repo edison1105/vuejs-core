@@ -935,7 +935,7 @@ describe('renderer: optimized mode', () => {
     expect(inner(root)).toBe(`<!---->`)
   })
 
-  test('should not take unmount children fast path if not in optimized mode', async () => {
+  test('should not take unmount children fast path if children contain cached nodes', async () => {
     const show = ref(true)
     const spyUnmounted = vi.fn()
 
@@ -955,6 +955,7 @@ describe('renderer: optimized mode', () => {
               cache[0] ||
                 (setBlockTracking(-1),
                 (cache[0] = createVNode('div', null, [createVNode(Child)])),
+                (cache[0].cached = true),
                 setBlockTracking(1),
                 cache[0])
             ]))
