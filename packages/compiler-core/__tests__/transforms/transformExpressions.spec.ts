@@ -555,6 +555,18 @@ describe('compiler: expression transform', () => {
       expect(code).not.toMatch(`_ctx.x`)
       expect(code).toMatchSnapshot()
     })
+
+    test('should not prefix temp variable of for', () => {
+      const { code } = compileWithBindingMetadata(
+        `<div @click="() => {
+          for (let i = 0; i < 10; i++) {
+            log(i,arr[i])
+          }         
+        }"/>`
+      )
+      expect(code).not.toMatch(`_ctx.i`)
+      expect(code).toMatchSnapshot()
+    })
     
     test('inline mode', () => {
       const { code } = compileWithBindingMetadata(
