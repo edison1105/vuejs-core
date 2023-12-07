@@ -100,23 +100,23 @@ function shouldSetAsProp(
     return false
   }
 
-  const tag = el.tagName
   // #1526 <input list> must be set as attribute
-  if (key === 'list' && tag === 'INPUT') {
+  if (key === 'list' && el.tagName === 'INPUT') {
     return false
   }
 
   // #2766 <textarea type> must be set as attribute
-  if (key === 'type' && tag === 'TEXTAREA') {
+  if (key === 'type' && el.tagName === 'TEXTAREA') {
     return false
   }
 
+  const tag = el.tagName
   // #8780 the width or height of embedded tags must be set as attribute
   if (
     (key === 'width' || key === 'height') &&
     (tag === 'IMG' || tag === 'VIDEO' || tag === 'CANVAS' || tag === 'SOURCE')
   ) {
-    return true
+    return false
   }
 
   // native onclick with string value, must be set as attribute
