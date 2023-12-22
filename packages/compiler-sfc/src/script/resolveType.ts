@@ -100,6 +100,10 @@ export interface MaybeWithScope {
   _ownerScope?: TypeScope
 }
 
+interface WithTypeParams {
+  typeParameterValue?: Node
+}
+
 interface ResolvedElements {
   props: Record<
     string,
@@ -121,7 +125,7 @@ export function resolveTypeElements(
   scope?: TypeScope,
   typeParameters?: Record<string, Node>
 ): ResolvedElements {
-  if (node._resolvedElements) {
+  if (node._resolvedElements && !typeParameters) {
     return node._resolvedElements
   }
   return (node._resolvedElements = innerResolveTypeElements(
@@ -294,10 +298,20 @@ function typeElementsToMap(
   const res: ResolvedElements = { props: {} }
   for (const e of elements) {
     if (e.type === 'TSPropertySignature' || e.type === 'TSMethodSignature') {
-      // capture generic parameters on node's scope
       if (typeParameters) {
-        scope = createChildScope(scope)
-        Object.assign(scope.types, typeParameters)
+        // capture generic parameter value on typeAnnotation
+        if (
+          e.typeAnnotation &&
+          e.typeAnnotation.type === 'TSTypeAnnotation' &&
+          e.typeAnnotation.typeAnnotation.type === 'TSTypeReference' &&
+          e.typeAnnotation.typeAnnotation.typeName &&
+          e.typeAnnotation.typeAnnotation.typeName.type === 'Identifier'
+        ) {
+          const name = e.typeAnnotation.typeAnnotation.typeName.name
+          ;(
+            e.typeAnnotation.typeAnnotation as WithTypeParams
+          ).typeParameterValue = typeParameters[name]
+        }
       }
       ;(e as MaybeWithScope)._ownerScope = scope
       const name = getId(e.key)
@@ -1449,7 +1463,8 @@ export function inferRuntimeType(
         if (node.typeAnnotation) {
           return inferRuntimeType(
             ctx,
-            node.typeAnnotation.typeAnnotation,
+            (node.typeAnnotation.typeAnnotation as WithTypeParams)
+              .typeParameterValue || node.typeAnnotation.typeAnnotation,
             scope
           )
         }
