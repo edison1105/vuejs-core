@@ -658,7 +658,6 @@ describe('reactivity/reactive/Array', () => {
           return super.findIndex(obj => obj.id === bar)
         }
 
-        // @ts-expect-error
         findLast(foo: any, bar: any, baz: any) {
           expect(foo).toBe('foo')
           expect(bar).toBe('bar')
@@ -667,7 +666,6 @@ describe('reactivity/reactive/Array', () => {
           return super.findLast(obj => obj.id === bar)
         }
 
-        // @ts-expect-error
         findLastIndex(foo: any, bar: any, baz: any) {
           expect(foo).toBe('foo')
           expect(bar).toBe('bar')
